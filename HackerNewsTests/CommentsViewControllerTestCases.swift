@@ -22,6 +22,18 @@ class CommentsViewControllerTestCases: XCTestCase {
         
     }
     
+    func testGetCommentsFromServer() {
+        
+        let commentsViewControllerObj = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CommentsViewController") as! CommentsViewController
+        let commentId:NSNumber = 2921983
+        commentsViewControllerObj.commentId = "\(commentId)"
+        
+        XCTAssertTrue(commentId.boolValue, "Comment ID should be valid")
+        XCTAssertNotNil(kBaseUrl, "Base url should not be nil")
+        
+        commentsViewControllerObj.getCommentsDataFromServer(commentId: "\(commentId)")
+    }
+    
     func testLoadingScreen()
     {
         let tableView = UITableView()
@@ -39,17 +51,6 @@ class CommentsViewControllerTestCases: XCTestCase {
 
     }
     
-    func testGetCommentsFromServer() {
-        
-        let commentsViewControllerObj = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CommentsViewController") as! CommentsViewController
-        let commentId:NSNumber = 2921983
-        commentsViewControllerObj.commentId = "\(commentId)"
-
-        XCTAssertTrue(commentId.boolValue, "Comment ID should be valid")
-        XCTAssertNotNil(kBaseUrl, "Base url should not be nil")
-
-        commentsViewControllerObj.getCommentsDataFromServer()
-    }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.

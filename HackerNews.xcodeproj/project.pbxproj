@@ -15,7 +15,7 @@
 		EDA349571E45D3DD001B042B /* StoriesViewControllerUITestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA349561E45D3DD001B042B /* StoriesViewControllerUITestCases.swift */; };
 		EDA349591E45D402001B042B /* CommentsViewControllerUITestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA349581E45D402001B042B /* CommentsViewControllerUITestCases.swift */; };
 		EDA3495B1E45D423001B042B /* CommentsViewControllerTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA3495A1E45D423001B042B /* CommentsViewControllerTestCases.swift */; };
-		EDA349681E461E76001B042B /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA349671E461E76001B042B /* Comments.swift */; };
+		EDA349681E461E76001B042B /* CommentClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA349671E461E76001B042B /* CommentClass.swift */; };
 		EDA3496A1E461E82001B042B /* ExpandableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA349691E461E82001B042B /* ExpandableCell.swift */; };
 		EDA3496D1E461E8D001B042B /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA3496B1E461E8D001B042B /* CommentsViewController.swift */; };
 		EDA3496E1E461E8D001B042B /* StoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA3496C1E461E8D001B042B /* StoriesViewController.swift */; };
@@ -23,6 +23,7 @@
 		EDA349741E461E9A001B042B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA349701E461E9A001B042B /* AppDelegate.swift */; };
 		EDA349751E461E9A001B042B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA349711E461E9A001B042B /* Constants.swift */; };
 		EDA349761E461E9A001B042B /* UtilClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA349721E461E9A001B042B /* UtilClass.swift */; };
+		EDF0F9911E47BE99004A1973 /* ReplyClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF0F9901E47BE99004A1973 /* ReplyClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +59,7 @@
 		EDA349581E45D402001B042B /* CommentsViewControllerUITestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewControllerUITestCases.swift; sourceTree = "<group>"; };
 		EDA3495A1E45D423001B042B /* CommentsViewControllerTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewControllerTestCases.swift; sourceTree = "<group>"; };
 		EDA3495C1E45DF8D001B042B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		EDA349671E461E76001B042B /* Comments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comments.swift; path = Model/Comments.swift; sourceTree = "<group>"; };
+		EDA349671E461E76001B042B /* CommentClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentClass.swift; path = Model/CommentClass.swift; sourceTree = "<group>"; };
 		EDA349691E461E82001B042B /* ExpandableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpandableCell.swift; path = View/ExpandableCell.swift; sourceTree = "<group>"; };
 		EDA3496B1E461E8D001B042B /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentsViewController.swift; path = Controller/CommentsViewController.swift; sourceTree = "<group>"; };
 		EDA3496C1E461E8D001B042B /* StoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoriesViewController.swift; path = Controller/StoriesViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +67,7 @@
 		EDA349701E461E9A001B042B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Common Classes/AppDelegate.swift"; sourceTree = "<group>"; };
 		EDA349711E461E9A001B042B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Common Classes/Constants.swift"; sourceTree = "<group>"; };
 		EDA349721E461E9A001B042B /* UtilClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UtilClass.swift; path = "Common Classes/UtilClass.swift"; sourceTree = "<group>"; };
+		EDF0F9901E47BE99004A1973 /* ReplyClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReplyClass.swift; path = Model/ReplyClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +155,8 @@
 		94107D7D1E4200A50067AE24 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EDA349671E461E76001B042B /* Comments.swift */,
+				EDA349671E461E76001B042B /* CommentClass.swift */,
+				EDF0F9901E47BE99004A1973 /* ReplyClass.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -332,8 +335,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDA3496D1E461E8D001B042B /* CommentsViewController.swift in Sources */,
-				EDA349681E461E76001B042B /* Comments.swift in Sources */,
+				EDA349681E461E76001B042B /* CommentClass.swift in Sources */,
 				EDA349741E461E9A001B042B /* AppDelegate.swift in Sources */,
+				EDF0F9911E47BE99004A1973 /* ReplyClass.swift in Sources */,
 				EDA349751E461E9A001B042B /* Constants.swift in Sources */,
 				EDA349731E461E9A001B042B /* APIRequestManager.swift in Sources */,
 				EDA3496E1E461E8D001B042B /* StoriesViewController.swift in Sources */,

@@ -24,8 +24,10 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
     var commentId: String!
 
     /// Comments Model class Object - Text shown during load the TableView
-    var commentsObj = Comments()
+    var commentsObj = CommentClass()
     
+    var replyClassObj = ReplyClass()
+
     var expandedRows = Set<Int>()
     
     /// Util class Object - To check internet connection, to show loading view etc..
@@ -49,7 +51,7 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
             self.commentsTableView.addSubview(utilObj.showLoadingViewOn(tableView: self.commentsTableView))
             
             // To get comments data
-            self.getCommentsDataFromServer()
+            self.getCommentsDataFromServer(commentId: self.commentId)
         }
         else
         {
@@ -75,12 +77,13 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
     {
         let cell:ExpandableCell = tableView.dequeueReusableCell(withIdentifier: "ExpandableCell") as! ExpandableCell
         
-        cell.titleLabel?.text = self.commentsObj.title
-        cell.titleLabel?.numberOfLines = 0
+        cell.commentLabel?.text = self.commentsObj.title
+        cell.commentLabel?.numberOfLines = 0
         
         ///Image to be shown on click of Tableview cell
-        cell.img.image = UIImage(named: "DummyImage")
-        
+        cell.replyLabel?.text = self.replyClassObj.text
+        cell.replyLabel?.numberOfLines = 0
+
         cell.isExpanded = self.expandedRows.contains(indexPath.row)
         return cell
     }
@@ -88,7 +91,7 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 144.0
+        return 254.0
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
@@ -101,6 +104,11 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
             case true:
                 self.expandedRows.remove(indexPath.row)
             case false:
+                // To get reply data
+                if let replyId = self.commentsObj.kidsArray?.firstObject
+                {
+                    self.getCommentsDataFromServer(commentId: "\(replyId)")
+                }
                 self.expandedRows.insert(indexPath.row)
         }
         
@@ -131,7 +139,7 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: API Calls
 
-    func getCommentsDataFromServer()
+    func getCommentsDataFromServer(commentId:String)
     {
         
         var resultString = kBaseUrl
@@ -150,8 +158,21 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
 
     func didgetResponseSuccessfully(jsonData: Any)
     {
-        print(jsonData)
-        self.commentsObj = Comments((jsonData as? [String : AnyObject])!)
+        let jsonResponseDict:NSDictionary = (jsonData as? NSDictionary)!
+
+        // Only replies will have Parent Id
+        if jsonResponseDict["parent"] != nil
+        {
+            self.replyClassObj = ReplyClass(jsonResponseDict as! Dictionary<String, AnyObject>)
+            
+        }
+        else
+        {
+            self.commentsObj = CommentClass(jsonResponseDict as! Dictionary<String, AnyObject>)
+
+        }
+        
+        
         
         DispatchQueue.main.sync {
             
@@ -186,7 +207,7 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
                 if UtilClass.isConnectedToNetwork()
                 {
                     //Get data from server, if user connects to internet
-                    self.getCommentsDataFromServer()
+                    self.getCommentsDataFromServer(commentId: self.commentId)
                 }
                 else
                 {

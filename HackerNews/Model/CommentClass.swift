@@ -11,7 +11,7 @@ import UIKit
 /*!
  * @discussion Comments Model class to store comments data
  */
-class Comments: NSObject
+class CommentClass: NSObject
 {
     var kidsArray: NSArray?
     var descendants: NSNumber?

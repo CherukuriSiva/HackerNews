@@ -10,21 +10,21 @@ import UIKit
 
 class ExpandableCell: UITableViewCell {
     
-    @IBOutlet weak var img: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var replyLabel: UILabel!
 
 
-    @IBOutlet weak var imgHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var replyLableHeightConstraint: NSLayoutConstraint!
 
     var isExpanded:Bool = false
         {
         didSet
         {
             if !isExpanded {
-                self.imgHeightConstraint.constant = 0.0
+                self.replyLableHeightConstraint.constant = 0.0
                 
             } else {
-                self.imgHeightConstraint.constant = 100.0
+                self.replyLableHeightConstraint.constant = 210.0
             }
         }
     }
